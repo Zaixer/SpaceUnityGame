@@ -222,9 +222,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1920799165
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a2ea8efdf76e844e897266208e5ce68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f597742f2c37e124496a39c1928b2560, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1011174644
 Transform:
@@ -233,8 +233,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011174642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .666666687, y: .666666687, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -286,6 +286,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1462809158}
   - 212: {fileID: 1462809157}
+  - 50: {fileID: 1462809161}
+  - 114: {fileID: 1462809159}
+  - 247: {fileID: 1462809160}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -315,9 +318,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1272762483
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 270e8f7f83f7e6e48950c08caafa68c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88b44f7f6f0e8b84eb062958106f0dd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1462809158
 Transform:
@@ -327,7 +330,44 @@ Transform:
   m_GameObject: {fileID: 1462809156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1462809159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462809156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fcee2e5c44d5c42a1bc201e4885115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!247 &1462809160
+ConstantForce2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462809156}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0}
+  m_RelativeForce: {x: 0, y: -1}
+  m_Torque: 0
+--- !u!50 &1462809161
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462809156}
+  m_Mass: 1
+  m_LinearDrag: .100000001
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
