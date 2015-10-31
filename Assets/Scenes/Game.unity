@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 52895150}
   - 61: {fileID: 52895149}
+  - 114: {fileID: 52895151}
   m_Layer: 0
   m_Name: RightCollider
   m_TagString: Untagged
@@ -128,6 +129,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &52895151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52895148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc8ba046b04d264282d00810a5ffb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &865608379
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +339,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1451347960}
   - 61: {fileID: 1451347959}
+  - 114: {fileID: 1451347961}
   m_Layer: 0
   m_Name: LeftCollider
   m_TagString: Untagged
@@ -359,6 +372,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1451347961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451347958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc8ba046b04d264282d00810a5ffb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1462809156
 GameObject:
   m_ObjectHideFlags: 0

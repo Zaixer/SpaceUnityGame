@@ -2,16 +2,8 @@
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController Instance;
-
     private const float TargetAspectRatio = 9f / 16f;
     private const float VerticalOffsetToPlayer = 4f;
-    private 
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     void Start()
     {
