@@ -2,8 +2,8 @@
 
 public class BackgroundController : MonoBehaviour
 {
-    private Renderer _renderer;
     private const float SpeedFactor = 0.1f;
+    private Renderer _renderer;
 
     void Start()
     {
