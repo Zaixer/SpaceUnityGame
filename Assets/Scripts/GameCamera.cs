@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class GameCamera : MonoBehaviour
 {
     private const float TargetAspectRatio = 9f / 16f;
     private const float VerticalOffsetToPlayer = 4f;
@@ -39,6 +39,6 @@ public class CameraController : MonoBehaviour
 
     private void UpdatePositionRelativeToPlayer()
     {
-        transform.position = new Vector3(transform.position.x, PlayerController.Instance.Position.y - VerticalOffsetToPlayer);
+        transform.position = new Vector3(transform.position.x, Player.Instance.Position.y - VerticalOffsetToPlayer);
     }
 }

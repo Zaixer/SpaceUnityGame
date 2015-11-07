@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public static PlayerController Instance;
+    public static Player Instance;
     public Vector3 Position { get { return transform.position; } }
 
     void Awake()

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BackgroundController : MonoBehaviour
+public class GameBackground : MonoBehaviour
 {
     private const float SpeedFactor = 0.1f;
     private Renderer _renderer;
@@ -17,6 +17,6 @@ public class BackgroundController : MonoBehaviour
 
     private void UpdateOffsetRelativeToPlayer()
     {
-        _renderer.material.mainTextureOffset = new Vector2(0f, PlayerController.Instance.Position.y * SpeedFactor);
+        _renderer.material.mainTextureOffset = new Vector2(0f, Player.Instance.Position.y * SpeedFactor);
     }
 }

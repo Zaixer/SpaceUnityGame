@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SpawnController : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     private const float SpawnChance = 1f / 200f;
     
