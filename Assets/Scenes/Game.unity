@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -272,7 +272,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Fuel: '
+  m_Text: FUEL
 --- !u!222 &834706707
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -391,6 +391,7 @@ GameObject:
   - 224: {fileID: 1011408332}
   - 222: {fileID: 1011408334}
   - 114: {fileID: 1011408333}
+  - 114: {fileID: 1011408335}
   m_Layer: 5
   m_Name: FuelValue
   m_TagString: Untagged
@@ -447,6 +448,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011408331}
+--- !u!114 &1011408335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1011408331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3967bd2c8fb8d44b6c2089e1ad873f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1149031979
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +809,7 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -807,7 +819,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Score: '
+  m_Text: SCORE
 --- !u!222 &1702387981
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -889,6 +901,7 @@ GameObject:
   - 224: {fileID: 1886245599}
   - 222: {fileID: 1886245601}
   - 114: {fileID: 1886245600}
+  - 114: {fileID: 1886245602}
   m_Layer: 5
   m_Name: ScoreValue
   m_TagString: Untagged
@@ -945,6 +958,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886245598}
+--- !u!114 &1886245602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886245598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1904210c1286c90448645b3b1e05a4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1992056635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1083,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2100968890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 7.19999981, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 865608384}
@@ -1072,7 +1096,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2100968890}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
