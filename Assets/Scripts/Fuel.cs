@@ -3,10 +3,9 @@ using UnityEngine.UI;
 
 public class Fuel : MonoBehaviour
 {
-    public int CurrentFuel { get { return _collectedFuel - Mathf.Abs(Mathf.RoundToInt(Player.Instance.Position.y)); } }
-
+    private const float FuelDecreasePerFrame = 0.01f;
+    private float _currentFuel = 100f;
     private Text _text;
-    private int _collectedFuel = 100;
     
     void Start()
     {
@@ -15,6 +14,11 @@ public class Fuel : MonoBehaviour
 
     void Update()
     {
-        _text.text = CurrentFuel.ToString();
+        _currentFuel -= FuelDecreasePerFrame;
+        if (_currentFuel <= 0f)
+        {
+            // TODO
+        }
+        _text.text = Mathf.RoundToInt(_currentFuel).ToString();
     }
 }
