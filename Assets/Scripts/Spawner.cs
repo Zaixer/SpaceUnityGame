@@ -5,10 +5,16 @@ public abstract class Spawner : MonoBehaviour
     public abstract float HorizontalSpacing { get; }
     public abstract float VerticalRange { get; }
     public abstract string ResourcePath { get; }
+    public abstract bool FirstSpawnSideToggleValue { get; }
 
     private bool ShouldSpawn { get { return Mathf.Abs(Player.Instance.Position.y) >= _verticalLocationOfLastSpawn + HorizontalSpacing; } }
     private bool _spawnSideToggle;
     private float _verticalLocationOfLastSpawn;
+
+    void Start()
+    {
+        _spawnSideToggle = FirstSpawnSideToggleValue;
+    }
 
     void Update()
     {

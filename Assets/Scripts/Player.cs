@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private const float MinAngle = 200f;
     private const float MaxAngle = 340f;
     private const float MaxAngleChangePerFrame = 10f;
+    private const float FuelIncreasePerPickup = 100f;
 
     void Awake()
     {
@@ -17,7 +18,28 @@ public class Player : MonoBehaviour
     void Update()
     {
         RotateTowardsPointer();
-    }    
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (GameObjectHelper.GetOriginalResourceName(other.gameObject))
+        {
+            case "Fuel":
+                Fuel.Instance.IncreaseFuel(FuelIncreasePerPickup);
+                Destroy(other.gameObject);
+                break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (GameObjectHelper.GetOriginalResourceName(collision.gameObject))
+        {
+            case "Asteroid":
+                Application.LoadLevel("Menu");
+                break;
+        }
+    }
 
     private void RotateTowardsPointer()
     {
