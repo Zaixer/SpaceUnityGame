@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ec40e0baf8d3d40a0293da801fff2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpeedFactor: .100000001
 --- !u!1 &834706704
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865608379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 184285575}
@@ -381,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3190a466c7b971848ab95862caa3352c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VerticalOffsetToPlayer: 5
 --- !u!1 &1011408331
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3967bd2c8fb8d44b6c2089e1ad873f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartFuel: 200
+  FuelIncreasePerPickup: 100
+  FuelDecreasePerFrame: .100000001
 --- !u!1 &1149031979
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +473,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1149031981}
   - 114: {fileID: 1149031980}
-  - 114: {fileID: 1149031982}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -484,9 +488,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1149031979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1515f85c42ef5674c9dbe75ffb4dcb61, type: 3}
+  m_Script: {fileID: 11500000, guid: 84875f42633314a40b965611d49f3563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AsteroidVerticalSpacing: 2
+  AsteroidHorizontalRange: 2.79999995
+  FuelVerticalSpacing: 10
+  FuelHorizontalRange: 3.29999995
 --- !u!4 &1149031981
 Transform:
   m_ObjectHideFlags: 0
@@ -499,17 +507,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 865608384}
   m_RootOrder: 3
---- !u!114 &1149031982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1149031979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610c1e87935edce4691ddba1a897d3d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1231335761
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0229e13de706b4e86dd918bc317b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinAngle: 200
+  MaxAngle: 340
+  MaxAngleChangePerFrame: 10
 --- !u!247 &1462809160
 ConstantForce2D:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1462809156}
   m_Mass: 1
   m_LinearDrag: 1
-  m_AngularDrag: 0
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_IsKinematic: 0
   m_Interpolate: 0

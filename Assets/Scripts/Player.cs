@@ -8,14 +8,21 @@ public class Player : MonoBehaviour
     public float MaxAngle = 340f;
     public float MaxAngleChangePerFrame = 10f;
 
+    private ConstantForce2D _constantForce2D;
+    private bool _isMoving = true;
+
     void Awake()
     {
         Instance = this;
+        _constantForce2D = GetComponent<ConstantForce2D>();
     }
 
     void Update()
     {
-        RotateTowardsPointer();
+        if (_isMoving)
+        {
+            RotateTowardsPointer();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -34,9 +41,15 @@ public class Player : MonoBehaviour
         switch (GameObjectHelper.GetOriginalResourceName(collision.gameObject))
         {
             case "Asteroid":
-                Application.LoadLevel("Menu");
+                StopMoving();
                 break;
         }
+    }
+
+    public void StopMoving()
+    {
+        _constantForce2D.relativeForce = new Vector2(0f, 0f);
+        _isMoving = false;
     }
 
     private void RotateTowardsPointer()

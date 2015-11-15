@@ -23,9 +23,9 @@ public class Fuel : MonoBehaviour
         _currentFuel -= FuelDecreasePerFrame;
         if (_currentFuel <= 0f)
         {
-            Application.LoadLevel("Menu");
+            Player.Instance.StopMoving();
         }
-        _text.text = Mathf.RoundToInt(_currentFuel).ToString();
+        _text.text = Mathf.Max(Mathf.RoundToInt(_currentFuel), 0f).ToString();
     }
 
     public void IncreaseFuel()
