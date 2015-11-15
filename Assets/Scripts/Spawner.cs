@@ -1,36 +1,42 @@
 ﻿using UnityEngine;
 
-public abstract class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    public abstract float HorizontalSpacing { get; }
-    public abstract float VerticalRange { get; }
-    public abstract string ResourcePath { get; }
-    public abstract bool FirstSpawnSideToggleValue { get; }
-
-    private bool ShouldSpawn { get { return Mathf.Abs(Player.Instance.Position.y) >= _verticalLocationOfLastSpawn + HorizontalSpacing; } }
+    public float AsteroidVerticalSpacing = 2f;
+    public float AsteroidHorizontalRange = 2.8f;
+    public float FuelVerticalSpacing = 10f;
+    public float FuelHorizontalRange = 3.3f;
+    
     private bool _spawnSideToggle;
-    private float _verticalLocationOfLastSpawn;
-
-    void Start()
-    {
-        _spawnSideToggle = FirstSpawnSideToggleValue;
-    }
+    private float _verticalLocationOfLastAsteroidSpawn;
+    private float _verticalLocationOfLastFuelSpawn;
 
     void Update()
     {
-        if (ShouldSpawn)
+        var verticalDistance = Mathf.Abs(Player.Instance.Position.y);
+        if (ShouldSpawn(verticalDistance, _verticalLocationOfLastAsteroidSpawn, AsteroidVerticalSpacing))
         {
-            Spawn();
+            Spawn("Asteroid", AsteroidHorizontalRange, _spawnSideToggle);
+            _verticalLocationOfLastAsteroidSpawn = verticalDistance;
+            if (ShouldSpawn(verticalDistance, _verticalLocationOfLastFuelSpawn, FuelVerticalSpacing))
+            {
+                Spawn("Fuel", FuelHorizontalRange, !_spawnSideToggle);
+                _verticalLocationOfLastFuelSpawn = verticalDistance;
+            }
+            _spawnSideToggle = !_spawnSideToggle;
         }
     }
 
-    private void Spawn()
+    private bool ShouldSpawn(float verticalDistance, float verticalLocationOfLastSpawn, float verticalSpacing)
     {
-        var gameObject = Resources.Load<GameObject>(ResourcePath);
-        var position = new Vector3(_spawnSideToggle ? Random.Range(-VerticalRange, 0f) : Random.Range(0f, VerticalRange), transform.position.y);
+        return verticalDistance >= verticalLocationOfLastSpawn + verticalSpacing;
+    }
+
+    private void Spawn(string resourcePath, float horizontalRange, bool left)
+    {
+        var gameObject = Resources.Load<GameObject>(resourcePath);
+        var position = new Vector3(left ? Random.Range(-horizontalRange, 0f) : Random.Range(0f, horizontalRange), transform.position.y);
         var rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
         Instantiate(gameObject, position, rotation);
-        _verticalLocationOfLastSpawn = Mathf.Abs(Player.Instance.Position.y);
-        _spawnSideToggle = !_spawnSideToggle;
     }
 }

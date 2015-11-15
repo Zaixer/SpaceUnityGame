@@ -4,11 +4,9 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     public Vector3 Position { get { return transform.position; } }
-
-    private const float MinAngle = 200f;
-    private const float MaxAngle = 340f;
-    private const float MaxAngleChangePerFrame = 10f;
-    private const float FuelIncreasePerPickup = 100f;
+    public float MinAngle = 200f;
+    public float MaxAngle = 340f;
+    public float MaxAngleChangePerFrame = 10f;
 
     void Awake()
     {
@@ -25,7 +23,7 @@ public class Player : MonoBehaviour
         switch (GameObjectHelper.GetOriginalResourceName(other.gameObject))
         {
             case "Fuel":
-                Fuel.Instance.IncreaseFuel(FuelIncreasePerPickup);
+                Fuel.Instance.IncreaseFuel();
                 Destroy(other.gameObject);
                 break;
         }

@@ -2,8 +2,9 @@
 
 public class GameCamera : MonoBehaviour
 {
+    public float VerticalOffsetToPlayer = 5f;
+
     private const float TargetAspectRatio = 9f / 16f;
-    private const float VerticalOffsetToPlayer = 4f;
 
     void Start()
     {

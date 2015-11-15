@@ -2,7 +2,8 @@
 
 public class GameBackground : MonoBehaviour
 {
-    private const float SpeedFactor = 0.1f;
+    public float SpeedFactor = 0.1f;
+
     private Renderer _renderer;
 
     void Start()
