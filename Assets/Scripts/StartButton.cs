@@ -7,7 +7,6 @@ public class StartButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        LoadingImage.SetActive(true);
-        Application.LoadLevel("Game");
+        SceneFader.Instance.StartNextLevel("Game");
     }
 }
