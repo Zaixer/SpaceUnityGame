@@ -6,6 +6,7 @@ public class SceneFader : MonoBehaviour
     public static SceneFader Instance;
     public float FadeSpeed = 1f;
 
+    private const float FadeSpeedFactor = 0.1f;
     private Image _image;
     private bool _isStartingScene = true;
     private bool _isEndingScene;
@@ -51,11 +52,11 @@ public class SceneFader : MonoBehaviour
 
     private void ContinueFadingToClear()
     {
-        _image.color = Color.Lerp(_image.color, Color.clear, FadeSpeed * Time.deltaTime);
+        _image.color = Color.Lerp(_image.color, Color.clear, FadeSpeed * FadeSpeedFactor);
     }
     
     private void ContinueFadingToBlack()
     {
-        _image.color = Color.Lerp(_image.color, Color.black, FadeSpeed * Time.deltaTime);
+        _image.color = Color.Lerp(_image.color, Color.black, FadeSpeed * FadeSpeedFactor);
     }
 }
