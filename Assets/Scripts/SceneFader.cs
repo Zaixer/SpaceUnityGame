@@ -9,7 +9,7 @@ public class SceneFader : MonoBehaviour
     private Image _image;
     private bool _isStartingScene = true;
     private bool _isEndingScene;
-    private string _nextLevel;
+    private string _nameOfNextScene;
     
     void Awake()
     {
@@ -24,7 +24,7 @@ public class SceneFader : MonoBehaviour
         if (_isStartingScene)
         {
             ContinueFadingToClear();
-            if (_image.color.a <= 0.01f)
+            if (_image.color.a < 0.01f)
             {
                 _image.color = Color.clear;
                 _image.enabled = false;
@@ -34,17 +34,17 @@ public class SceneFader : MonoBehaviour
         else if (_isEndingScene)
         {
             ContinueFadingToBlack();
-            if (_image.color.a >= 0.99f)
+            if (_image.color.a > 0.99f)
             {
-                Application.LoadLevel(_nextLevel);
+                Application.LoadLevel(_nameOfNextScene);
             }
         }
     }
 
-    public void StartNextLevel(string nextLevel)
+    public void LoadNewScene(string nameOfNexScene)
     {
         _image.enabled = true;
-        _nextLevel = nextLevel;
+        _nameOfNextScene = nameOfNexScene;
         _isStartingScene = false;
         _isEndingScene = true;
     }

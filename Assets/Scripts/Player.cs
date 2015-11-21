@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     public Vector3 Position { get { return transform.position; } }
+    public bool IsMoving { get { return _isMoving; } }
+    public GameObject EndOptionsPanel;
     public float MinAngle = 200f;
     public float MaxAngle = 340f;
     public float MaxAngleChangePerFrame = 10f;
@@ -41,15 +43,16 @@ public class Player : MonoBehaviour
         switch (GameObjectHelper.GetOriginalResourceName(collision.gameObject))
         {
             case "Asteroid":
-                StopMoving();
+                EndGame();
                 break;
         }
     }
 
-    public void StopMoving()
+    public void EndGame()
     {
         _constantForce2D.relativeForce = new Vector2(0f, 0f);
         _isMoving = false;
+        EndOptionsPanel.SetActive(true);
     }
 
     private void RotateTowardsPointer()
