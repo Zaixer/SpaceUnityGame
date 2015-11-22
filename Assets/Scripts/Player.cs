@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         {
             case "Fuel":
                 Fuel.Instance.IncreaseFuel();
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
                 break;
         }
     }

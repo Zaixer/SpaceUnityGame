@@ -6,7 +6,7 @@ public class GameCamera : MonoBehaviour
 
     private const float TargetAspectRatio = 9f / 16f;
 
-    void Start()
+    void Awake()
     {
         ScaleToShowTargetAspectRatioWithBlackBars();
     }

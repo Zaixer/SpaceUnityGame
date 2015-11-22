@@ -11,7 +11,7 @@ public class Fuel : MonoBehaviour
     private float _currentFuel;
     private Text _text;
     
-    void Start()
+    void Awake()
     {
         Instance = this;
         _text = GetComponent<Text>();

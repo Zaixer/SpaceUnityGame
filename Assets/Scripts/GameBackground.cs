@@ -6,7 +6,7 @@ public class GameBackground : MonoBehaviour
 
     private Renderer _renderer;
 
-    void Start()
+    void Awake()
     {
         _renderer = GetComponent<Renderer>();
     }
