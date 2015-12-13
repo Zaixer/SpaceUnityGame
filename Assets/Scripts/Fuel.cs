@@ -20,15 +20,15 @@ public class Fuel : MonoBehaviour
 
     void Update()
     {
-        if (Player.Instance.IsMoving)
+        if (Player.Instance.IsAlive)
         {
             _currentFuel -= FuelDecreasePerFrame;
+            _text.text = Mathf.Max(Mathf.RoundToInt(_currentFuel), 0f).ToString();
+            if (_currentFuel <= 0f)
+            {
+                Player.Instance.EndGame();
+            }
         }
-        if (_currentFuel <= 0f)
-        {
-            Player.Instance.EndGame();
-        }
-        _text.text = Mathf.Max(Mathf.RoundToInt(_currentFuel), 0f).ToString();
     }
 
     public void IncreaseFuel()

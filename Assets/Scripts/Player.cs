@@ -4,14 +4,14 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     public Vector3 Position { get { return transform.position; } }
-    public bool IsMoving { get { return _isMoving; } }
+    public bool IsAlive { get { return _isAlive; } }
     public GameObject EndOptionsPanel;
     public float MinAngle = 200f;
     public float MaxAngle = 340f;
     public float MaxAngleChangePerFrame = 10f;
 
     private ConstantForce2D _constantForce2D;
-    private bool _isMoving = true;
+    private bool _isAlive = true;
 
     void Awake()
     {
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (_isMoving)
+        if (_isAlive)
         {
             RotateTowardsPointer();
         }
@@ -29,30 +29,37 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        switch (GameObjectHelper.GetOriginalResourceName(other.gameObject))
+        if (_isAlive)
         {
-            case "Fuel":
-                Fuel.Instance.IncreaseFuel();
-                other.gameObject.SetActive(false);
-                break;
+            switch (GameObjectHelper.GetOriginalResourceName(other.gameObject))
+            {
+                case "Fuel":
+                    Fuel.Instance.IncreaseFuel();
+                    other.gameObject.SetActive(false);
+                    break;
+            }
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (GameObjectHelper.GetOriginalResourceName(collision.gameObject))
+        if (_isAlive)
         {
-            case "Asteroid":
-                EndGame();
-                break;
+            switch (GameObjectHelper.GetOriginalResourceName(collision.gameObject))
+            {
+                case "Asteroid":
+                    EndGame();
+                    break;
+            }
         }
     }
 
     public void EndGame()
     {
         _constantForce2D.relativeForce = new Vector2(0f, 0f);
-        _isMoving = false;
+        _isAlive = false;
         EndOptionsPanel.SetActive(true);
+        Score.Instance.SetEndScore();
     }
 
     private void RotateTowardsPointer()
