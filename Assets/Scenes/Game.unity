@@ -971,8 +971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndOptionsPanel: {fileID: 934153546}
-  MinAngle: 200
-  MaxAngle: 340
+  MinAngle: 181
+  MaxAngle: 359
   MaxAngleChangePerFrame: 10
 --- !u!247 &1462809160
 ConstantForce2D:

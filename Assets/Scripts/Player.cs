@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
     public Vector3 Position { get { return transform.position; } }
     public bool IsAlive { get { return _isAlive; } }
     public GameObject EndOptionsPanel;
-    public float MinAngle = 200f;
-    public float MaxAngle = 340f;
+    public float MinAngle = 181f;
+    public float MaxAngle = 359f;
     public float MaxAngleChangePerFrame = 10f;
 
     private ConstantForce2D _constantForce2D;
