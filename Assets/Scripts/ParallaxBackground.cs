@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameBackground : MonoBehaviour
+public class ParallaxBackground : MonoBehaviour
 {
     public float SpeedFactor = 0.1f;
 

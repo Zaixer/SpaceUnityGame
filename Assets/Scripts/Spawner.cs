@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float AsteroidVerticalSpacing = 2f;
-    public float AsteroidHorizontalRange = 2.8f;
+    public float MineVerticalSpacing = 2f;
+    public float MineHorizontalRange = 2.8f;
     public float FuelVerticalSpacing = 10f;
     public float FuelHorizontalRange = 3.3f;
 
-    private const int AsteroidPoolSize = 10;
+    private const int MinePoolSize = 10;
     private const int FuelPoolSize = 2;
     private bool _spawnSideToggle;
-    private float _verticalLocationOfLastAsteroidSpawn;
+    private float _verticalLocationOfLastMineSpawn;
     private float _verticalLocationOfLastFuelSpawn;
-    private List<GameObject> _asteroidPool;
+    private List<GameObject> minePool;
     private List<GameObject> _fuelPool;
 
     void Awake()
     {
-        _asteroidPool = GetPool("Asteroid", AsteroidPoolSize);
-        _fuelPool = GetPool("Fuel", FuelPoolSize);
+        minePool = GetPool(MinePoolSize, "Mine1", "Mine2");
+        _fuelPool = GetPool(FuelPoolSize, "Fuel");
     }
 
     void Update()
     {
         var verticalDistance = Mathf.Abs(Player.Instance.Position.y);
-        if (ShouldSpawn(verticalDistance, _verticalLocationOfLastAsteroidSpawn, AsteroidVerticalSpacing))
+        if (ShouldSpawn(verticalDistance, _verticalLocationOfLastMineSpawn, MineVerticalSpacing))
         {
-            Spawn(_asteroidPool, AsteroidHorizontalRange, _spawnSideToggle);
-            _verticalLocationOfLastAsteroidSpawn = verticalDistance;
+            Spawn(minePool, MineHorizontalRange, _spawnSideToggle);
+            _verticalLocationOfLastMineSpawn = verticalDistance;
             if (ShouldSpawn(verticalDistance, _verticalLocationOfLastFuelSpawn, FuelVerticalSpacing))
             {
                 Spawn(_fuelPool, FuelHorizontalRange, !_spawnSideToggle);
@@ -39,14 +39,16 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private List<GameObject> GetPool(string resourcePath, int size)
+    private List<GameObject> GetPool(int size, params string[] resourcePaths)
     {
         var pool = new List<GameObject>();
+        var resourcePathIndex = 0;
         for (var i = 0; i < size; i++)
         {
-            var gameObjectToAdd = Instantiate(Resources.Load<GameObject>(resourcePath));
+            var gameObjectToAdd = Instantiate(Resources.Load<GameObject>(resourcePaths[resourcePathIndex]));
             gameObjectToAdd.SetActive(false);
             pool.Add(gameObjectToAdd);
+            resourcePathIndex = resourcePathIndex + 1 < resourcePaths.Length ? resourcePathIndex + 1 : 0;
         }
         return pool;
     }

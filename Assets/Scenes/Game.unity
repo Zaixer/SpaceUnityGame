@@ -137,11 +137,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 184285575}
   - 33: {fileID: 184285574}
-  - 64: {fileID: 184285573}
   - 23: {fileID: 184285572}
   - 114: {fileID: 184285576}
   m_Layer: 0
-  m_Name: GameBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,18 +170,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &184285573
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 184285571}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &184285574
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -210,7 +197,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 184285571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ec40e0baf8d3d40a0293da801fff2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 47c79ccdbf72e0340bbeb43604abb33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedFactor: .100000001
@@ -622,8 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84875f42633314a40b965611d49f3563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AsteroidVerticalSpacing: 2
-  AsteroidHorizontalRange: 2.79999995
+  MineVerticalSpacing: 2
+  MineHorizontalRange: 2.79999995
   FuelVerticalSpacing: 10
   FuelHorizontalRange: 3.29999995
 --- !u!4 &1149031981
@@ -945,7 +932,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1272762483
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 88b44f7f6f0e8b84eb062958106f0dd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4783a46b2facb3945b2dffdcf10b9ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1462809158
 Transform:
@@ -953,9 +940,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1462809156}
-  m_LocalRotation: {x: 0, y: 0, z: .70710659, w: -.707106948}
+  m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1012,7 +999,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.91000009, y: 1.73000002}
+  m_Size: {x: 1, y: 1}
 --- !u!1001 &1522889597
 Prefab:
   m_ObjectHideFlags: 0
@@ -1050,7 +1037,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22461722, guid: d640370203b59fe4a9bb9e3b37c62876, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 22461722, guid: d640370203b59fe4a9bb9e3b37c62876, type: 2}
       propertyPath: m_AnchoredPosition.x

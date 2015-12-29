@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
         {
             switch (GameObjectHelper.GetOriginalResourceName(collision.gameObject))
             {
-                case "Asteroid":
+                case "Mine1":
+                case "Mine2":
                     EndGame();
                     break;
             }
