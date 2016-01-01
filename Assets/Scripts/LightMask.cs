@@ -2,8 +2,6 @@
 
 public class LightMask : MonoBehaviour
 {
-    public float VerticalOffsetToPlayer = 1.5f;
-
     void Update()
     {
         UpdatePositionRelativeToPlayer();
@@ -11,7 +9,7 @@ public class LightMask : MonoBehaviour
 
     private void UpdatePositionRelativeToPlayer()
     {
-        transform.position = new Vector3(Player.Instance.Position.x, Player.Instance.Position.y - VerticalOffsetToPlayer);
+        transform.position = new Vector3(Player.Instance.Position.x, Player.Instance.Position.y);
         transform.rotation = Player.Instance.transform.rotation;
     }
 }
