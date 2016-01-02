@@ -6,8 +6,6 @@ public class Player : MonoBehaviour
     public Vector3 Position { get { return transform.position; } }
     public bool IsAlive { get { return _isAlive; } }
     public GameObject EndOptionsPanel;
-    public float MinAngle = 181f;
-    public float MaxAngle = 359f;
     public float MaxAngleChangePerFrame = 10f;
 
     private ConstantForce2D _constantForce2D;
@@ -71,20 +69,26 @@ public class Player : MonoBehaviour
 
     private float GetNewAngle()
     {
-        var oldAngle = transform.eulerAngles.z;
+        var oldAngle = GetOldAngleAdjustedToAlwaysPointDown();
         var angleToPointer = GetAngleToPointer();
-        if (angleToPointer > oldAngle || angleToPointer < 90f)
-        {
-            if (angleToPointer < 90f)
-            {
-                return Mathf.Min(oldAngle + MaxAngleChangePerFrame, MaxAngle);
-            }
-            return Mathf.Min(oldAngle + MaxAngleChangePerFrame, angleToPointer, MaxAngle);
-        }
-        if (angleToPointer < oldAngle || angleToPointer > 90f)
-        {
-            return Mathf.Max(oldAngle - MaxAngleChangePerFrame, angleToPointer, MinAngle);
-        }
+        var isTurningRightMax = angleToPointer <= 90f;
+        if (isTurningRightMax) return Mathf.Min(oldAngle + MaxAngleChangePerFrame, 360f);
+        var isTurningLeftMax = angleToPointer >= 90f && angleToPointer <= 180f;
+        if (isTurningLeftMax) return Mathf.Max(oldAngle - MaxAngleChangePerFrame, 180f);
+        var isTurningRight = angleToPointer > oldAngle;
+        if (isTurningRight) return Mathf.Min(oldAngle + MaxAngleChangePerFrame, angleToPointer);
+        var isTurningLeft = angleToPointer < oldAngle;
+        if (isTurningLeft) return Mathf.Max(oldAngle - MaxAngleChangePerFrame, angleToPointer);
+        return oldAngle;
+    }
+
+    private float GetOldAngleAdjustedToAlwaysPointDown()
+    {
+        var oldAngle = transform.eulerAngles.z;
+        var isPointingUpAndRight = oldAngle <= 90f;
+        if (isPointingUpAndRight) return 360f;
+        var isPointingUpAndLeft = oldAngle >= 90f && oldAngle <= 180f;
+        if (isPointingUpAndLeft) return 180f;
         return oldAngle;
     }
 
