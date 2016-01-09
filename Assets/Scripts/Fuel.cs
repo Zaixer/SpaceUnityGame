@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class Fuel : MonoBehaviour
 {
     public static Fuel Instance;
-    public float StartFuel = 200f;
-    public float FuelIncreasePerPickup = 100f;
+    public float StartFuel = 100f;
+    public float FuelIncreasePerPickup = 50f;
     public float FuelDecreasePerFrame = 0.1f;
 
     private float _currentFuel;
